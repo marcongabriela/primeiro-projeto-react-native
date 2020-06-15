@@ -1,53 +1,27 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
- 
-export default function App() {
- 
-  const [lembrete, setLembrete] = useState(''); 
-  const capturarLembrete = (digitado) => {
-    setLembrete(digitado);
-  }
- 
-  const adicionarLembrete = () => {
-    console.log(lembrete);
-  }
- 
-  return (
-    <View style={styles.telaPrincipalView}>
- 
-      <View style = {styles.lembreteView}>
-        {/* usuário irá inserir lembretes aqui */}
-        <TextInput
-          placeholder = "Lembrar..."
-          style = {styles.lembreteTextInput}
-          onChangeText = {capturarLembrete} // capturarLembrete() já chama ao renderizar o componente.
-          value = {lembrete}
-        />
-        <Button title="+" onPress={adicionarLembrete}/>
-      </View>
- 
-      <View>
-        {/* aqui será exibida a lista de lembrentes */}
-      </View>
-    </View>
-  );
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+
+export default function App() {
+  const [texto, setTexto] = useState ('Texto inicial');
+  const [contador, setContador] = useState (0)
+  return (
+    <View style={styles.container}>
+      <Text style = {{marginBotton: 16 }}> {contador}</Text>
+      <Button 
+      title = "Alterar texto"
+      onPress= {() => setContador (contador +1)}
+      />
+      
+
+    </View>
+  );
 }
- 
-const styles = StyleSheet.create({
- 
-  telaPrincipalView: {
-    padding: 50
-  },
-  lembreteView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  lembreteTextInput: {
-    borderBottomColor: 'black',
-    width: '80%',
-    borderBottomWidth: 1,
-    padding: 2
-  }
- 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
